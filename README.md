@@ -67,7 +67,7 @@ has_one :address
 ## Addresses 
 |Column|Type|Options|
 |postal_code|string|null:false|
-|prefectures|string|null:false|
+|prefectures_id|integer|null:false|
 |municipality|string|null:false|
 |building|string|null:false|
 |house_number|string|null:false|
