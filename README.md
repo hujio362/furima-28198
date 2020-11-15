@@ -26,42 +26,49 @@ Things you may want to cover:
 ## Users 
 |Column|Type|Options|
 |nickname|string|null:false|
-|mailaddress|string|null:false|
-|password|string|null:false|
+|email|string|null:false|
+|encrypted_password|string|null:false|
+|first_name|string|null:false|
+|last_name|string|null:false|
+|first_name_kana|string|null:false|
+|last_name_kana|string|null:false|
+|birthday|string|null:false|
 
 ### Association
-has_many
+has_many :items
+has_many :orders
 
 ## Items
 |Column|Type|Options|
-|item_name|string|null:false|
-|category|string|null:false|
-|price|string|null:false|
-|image|string|null:false|
+|name|string|null:false|
+|category_id|integer|null:false|
+|price|integer|null:false|
 |explanation|text|null:false|
-|status|string|null:false|
-|delivery_cost|string|null:false|
-|area|string|null:false|
-|days|string|null:false|
+|status_id|integer|null:false|
+|delivery_cos_id_|integer|null:false|
+|area_id|integer|null:false|
+|days_id|integer|null:false|
 |user_id|references|null:false|
 
 ### Association
-has_one
+belongs_to :orders
 
-## Rops
+## Orders
 |Column|Type|Options|
 |user_id|references|null:false|
 |item_id|references|null:false|
-|date|date|null:false|
 
 ### Association
-has_many
+belongs_to :users
+has_one :item
+has_one :address
 
 ## Addresses 
 |Column|Type|Options|
 |postal_code|string|null:false|
 |prefectures|string|null:false|
 |municipality|string|null:false|
+|building|string|null:false|
 |house_number|string|null:false|
 |tel_number|string|null:false|
 
