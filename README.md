@@ -25,6 +25,7 @@ Things you may want to cover:
 
 ## Users 
 |Column|Type|Options|
+|------|----|-------|
 |nickname|string|null:false|
 |email|string|null:false|
 |encrypted_password|string|null:false|
@@ -40,6 +41,7 @@ has_many :orders
 
 ## Items
 |Column|Type|Options|
+|------|----|-------|
 |name|string|null:false|
 |category_id|integer|null:false|
 |price|integer|null:false|
@@ -56,6 +58,7 @@ belongs_to :users
 
 ## Orders
 |Column|Type|Options|
+|------|----|-------|
 |user|references|null:false|
 |item|references|null:false|
 
@@ -66,10 +69,11 @@ has_one :address
 
 ## Addresses 
 |Column|Type|Options|
+|------|----|-------|
 |postal_code|string|null:false|
 |prefectures_id|integer|null:false|
 |municipality|string|null:false|
-|building|string|null:false|
+|building|string||
 |house_number|string|null:false|
 |tel_number|string|null:false|
 
