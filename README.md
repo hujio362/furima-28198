@@ -52,6 +52,7 @@ has_many :orders
 
 ### Association
 belongs_to :orders
+belongs_to :users
 
 ## Orders
 |Column|Type|Options|
