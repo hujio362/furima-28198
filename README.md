@@ -64,7 +64,7 @@ belongs_to :user
 
 ### Association
 belongs_to :user
-has_one :item
+belongs_to :item
 has_one :address
 
 ## Addresses 
