@@ -73,4 +73,4 @@ has_one :address
 |tel_number|string|null:false|
 
 ### Association
-has_one
+has_one :order
