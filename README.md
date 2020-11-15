@@ -55,8 +55,8 @@ belongs_to :orders
 
 ## Orders
 |Column|Type|Options|
-|user_id|references|null:false|
-|item_id|references|null:false|
+|user|references|null:false|
+|item|references|null:false|
 
 ### Association
 belongs_to :users
