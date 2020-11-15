@@ -49,21 +49,21 @@ has_many :orders
 |status_id|integer|null:false|
 |delivery_cos_id_|integer|null:false|
 |area_id|integer|null:false|
-|days_id|integer|null:false|
-|user|references|null:false|
+|day_id|integer|null:false|
+|user|references|foreign_key: true|
 
 ### Association
-belongs_to :orders
-belongs_to :users
+has_one :order
+belongs_to :user
 
 ## Orders
 |Column|Type|Options|
 |------|----|-------|
-|user|references|null:false|
-|item|references|null:false|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
 
 ### Association
-belongs_to :users
+belongs_to :user
 has_one :item
 has_one :address
 
@@ -71,11 +71,12 @@ has_one :address
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string|null:false|
-|prefectures_id|integer|null:false|
+|prefecture_id|integer|null:false|
 |municipality|string|null:false|
 |building|string||
 |house_number|string|null:false|
 |tel_number|string|null:false|
+|order|references|null:false,foreign_key: true|
 
 ### Association
-has_one :order
+belongs_to :order
