@@ -48,7 +48,7 @@ has_many :orders
 |delivery_cos_id_|integer|null:false|
 |area_id|integer|null:false|
 |days_id|integer|null:false|
-|user_id|references|null:false|
+|user|references|null:false|
 
 ### Association
 belongs_to :orders
