@@ -1,6 +1,5 @@
 class FurimasController < ApplicationController
   def index
-    # binding.pry
-    @items = Item.all
+    @items = Item.order(id: :DESC)
   end
 end
