@@ -47,7 +47,7 @@ has_many :orders
 |price|integer|null:false|
 |explanation|text|null:false|
 |status_id|integer|null:false|
-|delivery_cos_id_|integer|null:false|
+|delivery_cost_id|integer|null:false|
 |area_id|integer|null:false|
 |day_id|integer|null:false|
 |user|references|foreign_key: true|

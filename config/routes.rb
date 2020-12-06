@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: "furimas#index"
- end
+  devise_for :users
+  resources :items, only: [:new, :create,] do
+    #resources :comments, only: :create
+    #collection do
+      #get 'search'
+  end
+  #resources :users, only: :show 
+end
