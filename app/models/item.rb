@@ -9,10 +9,10 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  validates :price  , presence: true , numericality: {  greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   with_options numericality: { other_than: 1 } do
-    validates :category_id 
+    validates :category_id
     validates :status_id
     validates :delivery_cost_id
     validates :area_id
@@ -20,10 +20,9 @@ class Item < ApplicationRecord
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :area
-    belongs_to_active_hash :category
-    belongs_to_active_hash :day
-    belongs_to_active_hash :delivery_cost
-    belongs_to_active_hash :status
-    
-  end
+  belongs_to_active_hash :area
+  belongs_to_active_hash :category
+  belongs_to_active_hash :day
+  belongs_to_active_hash :delivery_cost
+  belongs_to_active_hash :status
+end
