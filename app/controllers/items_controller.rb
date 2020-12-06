@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :move_to_index #except: [:index, :show, :search]
+  before_action :move_to_index
 
   def new
     @item = Item.new
@@ -9,18 +9,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.create(item_params)
-    # binding.pry
-    # rescue ActiveRecord::RecordInvalid => e
-    # p e.record.errors
     if @item.save
       redirect_to "/"   
     else
       render :new
     end
   end
-  # 1.if bunno teigi
-  # 2.redirect_to to render no tukaiwake
-  # 3.params to @item no check(@item.image.blob)
 
   private
   def item_params
