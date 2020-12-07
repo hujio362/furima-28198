@@ -124,10 +124,11 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
+
       <% if @items[0] != nil %>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to item_path(item) do %>
               <div class='item-img-content'>
                 <%= image_tag item.image, class: "item-img"%>
                 <%# 商品が売れていればsold outを表示しましょう
@@ -152,6 +153,7 @@
           </li>
         <% end %>
       <% end %>
+
       <%# 商品がない場合のダミー画像表示 %>
       <% if @items.length == 0 %>
         <li class='list'>
