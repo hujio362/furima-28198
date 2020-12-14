@@ -41,9 +41,9 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Delivery cost must be other than 1')
     end
     it '発送元地域の情報が1だと保存できない' do
-      @item.area_id = 1
+      @item.prefecture_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Area must be other than 1')
+      expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
     end
     it '発送までの日数がの情報が1だと保存できない' do
       @item.day_id = 1

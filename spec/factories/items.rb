@@ -6,7 +6,7 @@ FactoryBot.define do
     explanation       { 'testtest' }
     status_id         { 2 }
     delivery_cost_id  { 2 }
-    area_id           { 2 }
+    prefecture_id           { 2 }
     day_id            { 2 }
     association :user, factory: :user
 
