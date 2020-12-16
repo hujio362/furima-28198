@@ -1,12 +1,14 @@
 class OrdersController < ApplicationController
 
+  before_action :redirect_solditem
+  before_action :authenticate_user!
+  before_action :redirect_user
+  
   def index
-    @item = Item.find(params[:item_id])
     @user_order = UserOrder.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @user_order = UserOrder.new(order_params)
     if @user_order.valid?
       pay_item
@@ -31,4 +33,15 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def redirect_solditem
+    @item = Item.find(params[:item_id])
+    redirect_to root_path if @item.order != nil
+  end
+
+  def redirect_user
+    @item = Item.find(params[:item_id])
+    redirect_to root_path if current_user.id != @item.user.id
+  end
+
 end

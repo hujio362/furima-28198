@@ -8,6 +8,10 @@ RSpec.describe UserOrder, type: :model do
     it '全ての項目が存在すれば登録できる' do
       expect(@user_order).to be_valid
     end
+    it 'buildingがなくても登録できる' do
+      @user_order.building = ''
+      expect(@user_order).to be_valid
+    end
     it '郵便番号がなければ登録できない' do
       @user_order.postal_code = ''
       @user_order.valid?
@@ -16,7 +20,7 @@ RSpec.describe UserOrder, type: :model do
     it '郵便番号にはハイフンがなければ登録できない' do
       @user_order.postal_code = '1111111'
       @user_order.valid?
-      expect(@user_order.errors.full_messages).to include("Postal code 郵便番号にはハイフン（-）を含めてください。")
+      expect(@user_order.errors.full_messages).to include("Postal code にはハイフン（-）を含めてください。")
     end
     it '都道府県がなければ登録できない' do
       @user_order.prefecture_id = ''
@@ -24,7 +28,7 @@ RSpec.describe UserOrder, type: :model do
       expect(@user_order.errors.full_messages).to include("Prefecture can't be blank")
     end
     it '都道府県のidが1の時は登録できない' do
-      @user_order.prefecture_id = '1'
+      @user_order.prefecture_id = 1
       @user_order.valid?
       expect(@user_order.errors.full_messages).to include("Prefecture must be other than 1")
     end
@@ -41,12 +45,18 @@ RSpec.describe UserOrder, type: :model do
     it '電話番号がなければ登録できない' do
       @user_order.tel_number = ''
       @user_order.valid?
-      expect(@user_order.errors.full_messages).to include("Tel number can't be blank")
+      expect(@user_order.errors.full_messages).to include('Tel number は数字11桁以内で入力してください。')
+    end
+    it '電話番号は数字でなければ登録できない' do
+      @user_order.tel_number = 'abcdefghijk'
+      @user_order.valid?
+      expect(@user_order.errors.full_messages).to include('Tel number は数字11桁以内で入力してください。')
     end
     it '電話番号は11桁以内でなければ登録できない' do
       @user_order.tel_number = '00000000000000'
       @user_order.valid?
-      expect(@user_order.errors.full_messages).to include("Tel number 電話番号は11桁以内で入力してください。")
+      binding.pry
+      expect(@user_order.errors.full_messages).to include('Tel number は数字11桁以内で入力してください。')
     end
   end
 end
