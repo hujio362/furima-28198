@@ -4,10 +4,10 @@ class UserOrder
 
   with_options presence: true do
     validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "郵便番号にはハイフン（-）を含めてください。"}
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { other_than: 1 }
     validates :municipality
     validates :house_number
-    validates :tel_number, format: {with: /\A\d{11}\z/, message: "電話番号にはハイフン（-）を含めないでください。"}
+    validates :tel_number, format: {with: /\A\d{11}\z/, message: "電話番号は11桁以内で入力してください。"}
   end
 
   validates :token, presence: true
