@@ -13,8 +13,8 @@ class UserOrder
   validates :token, presence: true
 
   def save
-    order = Order.create
-    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, building: building, house_number: house_number, tel_number: tel_number, order_id: order.id, item_id: item.id, user_id: user.id, token: token)
+    order = Order.create(user_id: user_id, item_id: item_id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, building: building, house_number: house_number, tel_number: tel_number, order_id: order.id)
   end
 
 end
