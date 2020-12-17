@@ -15,12 +15,12 @@ class Item < ApplicationRecord
     validates :category_id
     validates :status_id
     validates :delivery_cost_id
-    validates :area_id
+    validates :prefecture_id
     validates :day_id
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :area
+  belongs_to_active_hash :prefecture
   belongs_to_active_hash :category
   belongs_to_active_hash :day
   belongs_to_active_hash :delivery_cost
