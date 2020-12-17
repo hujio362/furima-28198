@@ -7,5 +7,7 @@ FactoryBot.define do
     tel_number  { '00000000000' }
     building  {'aa'}
     token {'kkkkkkkk'}
+    item_id { 1 }
+    user_id { 1 }
   end
 end

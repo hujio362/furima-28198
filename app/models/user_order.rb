@@ -8,11 +8,11 @@ class UserOrder
     validates :municipality
     validates :house_number
     validates :tel_number, format: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください。' }
-    # validates :tel_number
     validates :tel_number, length: { maximum: 11 }
+    validates :item_id
+    validates :user_id
+    validates :token
   end
-
-  validates :token, presence: true
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)

@@ -60,6 +60,21 @@ RSpec.describe UserOrder, type: :model do
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include('Tel number is too long (maximum is 11 characters)')
       end
+      it 'tokenがなければ登録できない' do
+        @user_order.token = ''
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idがなければ登録できない' do
+        @user_order.user_id = nil
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idがなければ登録できない' do
+        @user_order.item_id = nil
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
