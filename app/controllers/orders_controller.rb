@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+  before_action :item_find
   before_action :redirect_solditem
   before_action :authenticate_user!
   before_action :redirect_user
@@ -35,13 +35,14 @@ class OrdersController < ApplicationController
   end
 
   def redirect_solditem
-    @item = Item.find(params[:item_id])
     redirect_to root_path if @item.order != nil
   end
 
   def redirect_user
-    @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user.id != @item.user.id
+    redirect_to root_path if current_user.id == @item.user.id
   end
 
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
 end

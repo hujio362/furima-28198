@@ -7,7 +7,9 @@ class UserOrder
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :municipality
     validates :house_number
-    validates_format_of :tel_number, with: /\A[0-9]+\z/, length: { maximum: 11 }, message: 'は数字11桁以内で入力してください。'
+    validates :tel_number, format: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください。' }
+    # validates :tel_number
+    validates :tel_number, length: { maximum: 11 }
   end
 
   validates :token, presence: true
